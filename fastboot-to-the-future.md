@@ -5,7 +5,7 @@
 
 ---
 
-# Before we get started... 
+# Before we talk FastBoot... 
 ## Ember is a story of ❤️
 
 ---
@@ -21,7 +21,7 @@
 
 # Be the Bark
 ![alt text](http://madhatted.com/images/2016-02-10/more-bark-projects.jpg)
-* https://madhatted.com/2016/2/10/be-the-bark-ember-js-community (Matthew Beale, @mixonic)
+* https://madhatted.com/2016/2/10/be-the-bark-ember-js-community (Matthew Beale, @mixonic, Ember Core)
 
 ---
 
@@ -40,7 +40,7 @@
 ---
 
 # The web is a big, big world.
-## ambitious applications
+## and we're building ambitious applications
 ## Ember is the SDK for the web
 - 📱  `ember-electron`(see [Ghost Desktop](https://github.com/tryghost/Ghost-Desktop))
 - 🖥 `ember cordova`, `ember-cli-cordova`
@@ -55,6 +55,17 @@
 ###### (and more...)
 
 ---
+
+# The difference between
+<img src="https://drive.google.com/uc?id=0B5cL_igoQlKra2JMcWhUdnE2cE0">
+
+---
+
+# And...
+<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrLWtrdEhUQktwLUE">
+
+---
+
 
 # Progressive Enhancement
 ## The obvious win
@@ -84,39 +95,25 @@ curl https://ember-fastboot.com
 
 ---
 
-# The difference between
-<img src="https://drive.google.com/uc?id=0B5cL_igoQlKra2JMcWhUdnE2cE0">
-
----
-
-# And...
-<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrLWtrdEhUQktwLUE">
-
----
-
 # It's just an ember app
-- check out `ember-fastboot.com` with the Ember Inspector (be the bark!)
-- Your browser instantly shows **state**, it's html and css.
-- The javascript payload *boots*, takes over (rips out that initial render), and you're live
+- check out `ember-fastboot.com` with the Ember Inspector *#bethebark*
+- Your browser instantly shows **state**, its html and css.
+- The javascript payload *boots*, takes over (rips out initial render), and you're live
 
 ---
 
-# Ember
-
-
----
-
-# Ember with FastBoot
-
+<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrT2tpQzFMU0pxQjA" width=650>
 
 ---
 
-# At it's core
+# At the core
 
 ```
 const FastBoot = require('fastboot');
 
 let app = new FastBoot({
+  // `dist` is the result of your build
+  // via `ember-cli`
   distPath: 'path/to/dist'
 });
 
@@ -124,16 +121,16 @@ app.visit('/photos')
   .then(result => result.html());
 
 ```
-
+## it's a render
 ## `ember app (at route) ➡️ rendered html`
 
 https://github.com/ember-fastboot/fastboot
 
-... *getting the router right*
+... *getting the router right #bethebark*
 
 ---
 
-# get your build fastbooted 🤖
+# get fastbooted 🤖
 ## `ember-cli-fastboot`
 ## bootstrap your ember app
 
@@ -142,7 +139,8 @@ https://github.com/ember-fastboot/fastboot
 3. check your `dist`
 4. `package.json`!
 
-### builds are special, your app becomes fastbooted âĄď¸
+### builds become special, your app becomes fastbooted
+###### build via `ember-cli`, #bethebark
 
 ---
 
@@ -155,13 +153,20 @@ https://github.com/ember-fastboot/fastboot
 
 ---
 
+<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrQ05zWkJDeHI1bWs" width="700">
+
+---
+
 # Tips and gotchas 💡🙈
 
-- `ember fastboot --serve-assets` *
-- Avoid `jQuery` and relying on `DOM`manipulation as much as possible
+- `ember fastboot --serve-assets`
+  - *basic fastboot app server*
+- Avoid `jQuery` and relying on `DOM` manipulation as much as possible
+  - mind the hooks 🎣: `init`, `didReceiveAttrs`, `didUpdateAttrs`, `willRender` and `willUpdate` hooks.
+- Your initial UI feels "ready", it isn't
+  - consider disabled states, and  
 - Use `ember-network`, `fetch` spec and just works.
-- whitelist node modules in package.json
-- __TODO__ hooks???
+- Whitelist node modules in `package.json`
 
 ---
 
@@ -174,7 +179,31 @@ https://github.com/ember-fastboot/fastboot
 
 ---
 
-# Case study: non-browser consumer 💌
+# Case study: e-mail 💌
+- email is **text** + **html** *+ css*
+- ember does both *and builds css*
+- ## hello fastboot
+
+---
+
+# Case study: e-mail 💌
+- 🔌  power of components
+- 🔌 power of your existing addons
+- 🚜 configuration via node `process.env`
+  - bring in your API keys and secrets
+- 🛠 build fast and on the fly 👐🏽 *via ember serve*
+- email = no external stylesheets
+- `express` middleware is your 🏭 assembly line
+- ❤️ the route
+
+\*
+
+- ember app ➡️ fastboot ➡️ html ➡️ inline css ➡️ dispatch
+- `ember`➡️ `ember-cli-fastboot` ➡️ `express.use` middleware response ➡️ `cheerio` + `juice` ➡️ `mailgun`
+
+---
+
+<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrendXZ3BqRmJIMGM">
 
 ---
 
@@ -192,19 +221,29 @@ https://github.com/ember-fastboot/fastboot
 
 ---
 
-# Case study: playing with fire đĽđ
-## if the đ fits, dance. - @chadian
+# Case study: playing with fire 😈🔥
+>*if the 👠 fits, 💃🏻*
+> \- @chadian
 
 ---
 
-#
-#
-#
+# Dear Diary 😈🔥
+1. Prototype it -- *(`ember-cli`, `ember-bootstrap`)*
+2. Oh, that API -- *github profile picture with `ember-network`*
+3. Existing data -- *pull it in (mongo via npm and shoebox)*
+4. Make it pretty -- `ember-moment` and `ember-remarkable`
+5. Paginate it -- `ember-cli-pagination`
+6. I want to add posts -- *`post` via `express` middleware`
+7. ... move existing data to express middleware and build out API?
+8. ... profit 💸💰💵
+
+## consider the alternative
 
 ---
 
 # Bonus Tips
 
+- you're in nodeland, go nuts
 - Environment variables at FastBoot runtime
 ```js
 if (fastboot.get('isFastBoot')) {
@@ -215,7 +254,29 @@ if (fastboot.get('isFastBoot')) {
 
 ---
 
-# 👨🏽‍💻 dream and #bethebark
+# other ideas
+- static embeddable
+  - simple html deliverable *(ie: messaging, )*
+  - ember app to compose
+    - same api
+    - same ember components
+    - fastboot renders and delivers
+- hardware + other npm sources
+  - don't require API wrappers necessarily
+  - useful visual resources and feedback
+- e-commerce
+  - speed is key, take my money
+- static sites / cms
+
+---
+
+# the future
+- rehydration (we paid for that)
+- ... and other cool stuff, come hang out in `-fastboot` on the ember slack
+
+---
+
+# 👨🏽‍💻 dream big and #bethebark 🐶🌲
 ## Thank you
 
 ---

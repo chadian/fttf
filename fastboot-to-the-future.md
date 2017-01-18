@@ -1,7 +1,7 @@
 <!-- $theme: default -->
 
 # FastBoot to the Future
-## Chad Carbert, @chadian  on most things
+## Chad Carbert, @chadian on most things
 
 ---
 
@@ -11,7 +11,7 @@
 ---
 
 - We are a Community ✌🏽
-- unified, holistic approach to common challenges
+- opinionated holistic approach to common challenges
 - RFCs, a healthy discussion and evolution
 - diversified across organizations of all sizes, and types
 - `ember-cli`, ember addons, and the big ecosystem
@@ -72,30 +72,24 @@
 ---
 
 
-# Progressive Enhancement
-## The obvious win
+# Progressive Enhancement (the obvious win)
 
 ```sh
 curl https://ember-fastboot.com
 ```
 ```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ember FastBoot</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-  ...
-  </head>
   <body>
+    
+    <!-- EMBER RENDERED CONTENT! -->
+    <div id="ember4704" class="ember-view"><div id="ember4719" class="ember-view liquid-container"><div id="ember4730" class="ember-view liquid-child"><div id="ember4735" class="ember-view main-hero"><div>
+
     ...
+    
+    <!-- the ember js payload -->
     <script src="https://fastboot-website-herokuapp-com.global.ssl.fastly.net/assets/vendor-7f3caf99c54521a2a6d4bd2969a9e9c1.js"></script>
     <script src="https://fastboot-website-herokuapp-com.global.ssl.fastly.net/assets/fastboot-website-983621bc95e9bdcc3780ea67e3950fd3.js"></script>
-   ...
+
   </body>
-</html>
 ```
 
 ---
@@ -109,7 +103,7 @@ curl https://ember-fastboot.com
 
 # At the core
 
-```
+```js
 const FastBoot = require('fastboot');
 
 let app = new FastBoot({
@@ -122,7 +116,7 @@ app.visit('/photos')
   .then(result => result.html());
 
 ```
-## it's a render
+
 ## `ember app (at route) ➡️ rendered html`
 
 https://github.com/ember-fastboot/fastboot
@@ -182,6 +176,8 @@ Matches on FastBoot `app.visit`
   - mind the hooks 🎣: `init`, `didReceiveAttrs`, `didUpdateAttrs`, `willRender` and `willUpdate`
 - Your initial UI feels "ready", it isn't
   - consider disabled states on elements, and temporary indicators
+- `FastBoot` vs `fastboot: Ember.service.inject()`
+  - wrap `FastBoot`with `fastboot.get('isFastboot')`
 
 ---
 
@@ -271,16 +267,16 @@ if (!process.env.EMBER_CLI_FASTBOOT) {}
 # Bonus Tips
 
 - you're in nodeland, go nuts
-- DIY the `fastboot-app-server`
 - Environment variables at FastBoot runtime
 ```js
 if (fastboot.get('isFastBoot')) {
-	Ember.get(FastBoot.require('process'), 'env.FTTF_GITHUB_URL')
+  Ember.get(FastBoot.require('process'), 'env.FTTF_GITHUB_URL')
 }
 ```
 - `deferRendering(thenable)`
+- `nodemon` in your express app, watch your dist 
+  - `ember s`, `ember fastboot`, `nodemon server.js -w . ../dist`
 - Node debug or `node --inspect --debug-brk` (natively in Chrome with `node >= v6.3.0`)
-- base64 inline images (and store in shoebox), wrap with service
 
 ---
 
@@ -297,6 +293,7 @@ if (fastboot.get('isFastBoot')) {
 - e-commerce
   - speed is key, take my money
 - static sites / cms
+- base64 inline images (and store in shoebox), wrap with service
 
 ---
 

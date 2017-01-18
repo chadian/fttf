@@ -15,7 +15,7 @@
 - RFCs, a healthy discussion and evolution
 - diversified across organizations of all sizes, and types
 - `ember-cli`, ember addons, and the big ecosystem
-- We're growing: Ember Learning Team, EmberConf, meetups
+- Foundational growth: Ember Learning Team, EmberConf, meetups
 
 ---
 
@@ -28,14 +28,14 @@
 # We are the bark
 <img src="https://pbs.twimg.com/media/BgsvdC8CUAE6OuK.jpg" width=400px>
 
-*the moment in which Alex realized 'be the bark'*
+*the moment in which Alex realized the importance of bark*
 
 - Ember Core Team Alumni & Mr. Router
 - [The *very first* EmberConf 2014](https://www.youtube.com/watch?v=Syv_OTzHOr0)
 - EmberConf DJ
 - `ember-concurrency`
 - FutureProof Retail
-- EmberConf 2017
+- Coming Soon: EmberConf 2017
 
 ---
 
@@ -46,6 +46,11 @@
 - 🖥 `ember cordova`, `ember-cli-cordova`
 - ⤴️ `ember-cli-deploy`
 - **Stability without Stagnation**
+
+---
+
+# Currently in Ember Land
+<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrT2tpQzFMU0pxQjA" width="650">
 
 ---
 
@@ -97,12 +102,8 @@ curl https://ember-fastboot.com
 
 # It's just an ember app
 - check out `ember-fastboot.com` with the Ember Inspector *#bethebark*
-- Your browser instantly shows **state**, its html and css.
+- Your browser instantly shows **state**, html and css.
 - The javascript payload *boots*, takes over (rips out initial render), and you're live
-
----
-
-<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrT2tpQzFMU0pxQjA" width=650>
 
 ---
 
@@ -234,8 +235,9 @@ https://github.com/ember-fastboot/fastboot
 4. Make it pretty -- `ember-moment` and `ember-remarkable`
 5. Paginate it -- `ember-cli-pagination`
 6. I want to add posts -- *`post` via `express` middleware`
+8. ... profit 💸
 7. ... move existing data to express middleware and build out API?
-8. ... profit 💸💰💵
+8. ... more profit 💸💰💵
 
 ## consider the alternative
 
@@ -244,6 +246,7 @@ https://github.com/ember-fastboot/fastboot
 # Bonus Tips
 
 - you're in nodeland, go nuts
+- DIY the `fastboot-app-server`
 - Environment variables at FastBoot runtime
 ```js
 if (fastboot.get('isFastBoot')) {

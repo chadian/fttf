@@ -162,10 +162,10 @@ https://github.com/ember-fastboot/fastboot
 - `ember fastboot --serve-assets`
   - *basic fastboot app server*
 - Avoid `jQuery` and relying on `DOM` manipulation as much as possible
-  - mind the hooks 🎣: `init`, `didReceiveAttrs`, `didUpdateAttrs`, `willRender` and `willUpdate` hooks.
+  - mind the hooks 🎣: `init`, `didReceiveAttrs`, `didUpdateAttrs`, `willRender` and `willUpdate`
 - Your initial UI feels "ready", it isn't
-  - consider disabled states, and  
-- Use `ember-network`, `fetch` spec and just works.
+  - consider disabled states on elements, and loading indications
+- Forget ajax. Use `ember-network`, `fetch` spec and it's "isomorphic"
 - Whitelist node modules in `package.json`
 
 ---
@@ -187,8 +187,8 @@ https://github.com/ember-fastboot/fastboot
 ---
 
 # Case study: e-mail 💌
-- 🔌  power of components
-- 🔌 power of your existing addons
+- 🔌  power of existing components
+- 🔌 power of existing addons
 - 🚜 configuration via node `process.env`
   - bring in your API keys and secrets
 - 🛠 build fast and on the fly 👐🏽 *via ember serve*
@@ -250,7 +250,9 @@ if (fastboot.get('isFastBoot')) {
 	Ember.get(FastBoot.require('process'), 'env.FTTF_GITHUB_URL')
 }
 ```
+- `deferRendering(thenable)`
 - Node debug or `node --inspect --debug-brk` (natively in Chrome with `node >= v6.3.0`)
+- base64 inline images (and store in shoebox), wrap with service
 
 ---
 
@@ -272,6 +274,7 @@ if (fastboot.get('isFastBoot')) {
 
 # the future
 - rehydration (we paid for that)
+- ❓❓ spitballing here, fastboot templates ❓❓
 - ... and other cool stuff, come hang out in `-fastboot` on the ember slack
 
 ---

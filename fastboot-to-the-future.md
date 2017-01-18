@@ -49,7 +49,7 @@
 
 ---
 
-# Currently in Ember Land
+# Currently in Ember
 <img src="https://drive.google.com/uc?id=0B5cL_igoQlKrT2tpQzFMU0pxQjA" width="650">
 
 ---
@@ -127,8 +127,6 @@ app.visit('/photos')
 
 https://github.com/ember-fastboot/fastboot
 
-... *getting the router right #bethebark*
-
 ---
 
 # get fastbooted 🤖
@@ -145,12 +143,31 @@ https://github.com/ember-fastboot/fastboot
 
 ---
 
-# FastBoot App Server
+# `fastboot-app-server`
 ##### `request ➡️ (before) ➡️  render ➡️ (after) ➡️ response`
 - express + middleware
 - first pass within your FastBoot runtime (~ node)
 - throw stuff in the shoebox for later
 - `FastBoot` magic global
+
+---
+
+# DIY App Server
+## Express + `fastboot-express-middleware`
+
+---
+
+# Route
+
+*state via url*
+`/posts/:post_slug?includeMagic=true`
+
+Matches on ember-app
+Matches on express request
+Matches on FastBoot `app.visit`
+
+... *getting the router right*
+*#bethebark*
 
 ---
 
@@ -160,20 +177,28 @@ https://github.com/ember-fastboot/fastboot
 
 # Tips and gotchas 💡🙈
 
-- `ember fastboot --serve-assets`
-  - *basic fastboot app server*
+- `ember fastboot --serve-assets`, *basic fastboot app server*
 - Avoid `jQuery` and relying on `DOM` manipulation as much as possible
   - mind the hooks 🎣: `init`, `didReceiveAttrs`, `didUpdateAttrs`, `willRender` and `willUpdate`
 - Your initial UI feels "ready", it isn't
-  - consider disabled states on elements, and loading indications
-- Forget ajax. Use `ember-network`, `fetch` spec and it's "isomorphic"
+  - consider disabled states on elements, and temporary indicators
+
+---
+
+# Tips and gotchas 💡🙈
+- Forget "ajax". Use `ember-network`, `fetch` spec and it's "isomorphic"
 - Whitelist node modules in `package.json`
+- Clean the build
+```
+if (!process.env.EMBER_CLI_FASTBOOT) {}
+```
 
 ---
 
 # What else can we do along the way?
 ## Think about
 - **state**
+- **presentation** of state
 - **consumers** of state
 - **process** by which state is consumed
 - *available resources*
@@ -278,6 +303,7 @@ if (fastboot.get('isFastBoot')) {
 # the future
 - rehydration (we paid for that)
 - ❓❓ spitballing here, fastboot templates ❓❓
+- `POST`? [Ideas](https://github.com/emberjs/rfcs/pull/185) are being tossed around
 - ... and other cool stuff, come hang out in `-fastboot` on the ember slack
 
 ---

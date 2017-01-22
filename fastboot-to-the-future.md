@@ -6,7 +6,6 @@
 ---
 
 # Before we talk FastBoot... 
-## Ember is a story of ❤️
 
 ---
 
@@ -42,8 +41,8 @@
 # The web is a big, big world.
 ## and we're building ambitious applications
 ## Ember is the SDK for the web
-- 📱  `ember-electron`(see [Ghost Desktop](https://github.com/tryghost/Ghost-Desktop))
-- 🖥 `ember cordova`, `ember-cli-cordova`
+- 🖥  `ember-electron`(see [Ghost Desktop](https://github.com/tryghost/Ghost-Desktop))
+- 📱 `ember cordova`, `ember-cli-cordova`
 - ⤴️ `ember-cli-deploy`
 - **Stability without Stagnation**
 
@@ -54,10 +53,14 @@
 
 ---
 
-# And FastBoot!
+# And then there's FastBoot!
 
 ## progressive enhancement for ambitious web apps.
 ###### (and more...)
+
+---
+
+<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrQ05zWkJDeHI1bWs" width="700">
 
 ---
 
@@ -101,7 +104,7 @@ curl https://ember-fastboot.com
 
 ---
 
-# At the core
+# At the core [`fastboot`](https://github.com/ember-fastboot/fastboot)
 
 ```js
 const FastBoot = require('fastboot');
@@ -124,7 +127,7 @@ https://github.com/ember-fastboot/fastboot
 ---
 
 # get fastbooted 🤖
-## `ember-cli-fastboot`
+## [`ember-cli-fastboot`](https://github.com/ember-fastboot/ember-cli-fastboot)
 ## bootstrap your ember app
 
 1. `ember install ember-cli-fastboot`
@@ -137,7 +140,7 @@ https://github.com/ember-fastboot/fastboot
 
 ---
 
-# `fastboot-app-server`
+# [`fastboot-app-server`](https://github.com/ember-fastboot/fastboot-app-server)
 ##### `request ➡️ (before) ➡️  render ➡️ (after) ➡️ response`
 - express + middleware
 - first pass within your FastBoot runtime (~ node)
@@ -147,25 +150,20 @@ https://github.com/ember-fastboot/fastboot
 ---
 
 # DIY App Server
-## Express + `fastboot-express-middleware`
+## Express + [`fastboot-express-middleware`](fastboot-express-middleware)
 
 ---
 
-# Route
+# Remember the route
+## `/posts/:post_slug?includeMagic=true`
 
-*state via url*
-`/posts/:post_slug?includeMagic=true`
-
-Matches on ember-app
-Matches on express request
-Matches on FastBoot `app.visit`
+- Captures state
+  - Matches on ember-app
+  - Matches on express request
+  - Matches on FastBoot `app.visit`
 
 ... *getting the router right*
 *#bethebark*
-
----
-
-<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrQ05zWkJDeHI1bWs" width="700">
 
 ---
 
@@ -191,13 +189,18 @@ if (!process.env.EMBER_CLI_FASTBOOT) {}
 
 ---
 
-# What else can we do along the way?
+# What else can we do on this request/response trip through nodeland?
 ## Think about
 - **state**
 - **presentation** of state
 - **consumers** of state
 - **process** by which state is consumed
 - *available resources*
+
+---
+
+# Case study: e-mail 💌
+<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrendXZ3BqRmJIMGM" width="800">
 
 ---
 
@@ -209,7 +212,7 @@ if (!process.env.EMBER_CLI_FASTBOOT) {}
 ---
 
 # Case study: e-mail 💌
-- 🔌  power of existing components
+- 🔌  power of existing components (`ember-i18n`)
 - 🔌 power of existing addons
 - 🚜 configuration via node `process.env`
   - bring in your API keys and secrets
@@ -218,14 +221,7 @@ if (!process.env.EMBER_CLI_FASTBOOT) {}
 - `express` middleware is your 🏭 assembly line
 - ❤️ the route
 
-\*
-
-- ember app ➡️ fastboot ➡️ html ➡️ inline css ➡️ dispatch
 - `ember`➡️ `ember-cli-fastboot` ➡️ `express.use` middleware response ➡️ `cheerio` + `juice` ➡️ `mailgun`
-
----
-
-<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrendXZ3BqRmJIMGM">
 
 ---
 
@@ -270,7 +266,7 @@ if (!process.env.EMBER_CLI_FASTBOOT) {}
 - Environment variables at FastBoot runtime
 ```js
 if (fastboot.get('isFastBoot')) {
-  Ember.get(FastBoot.require('process'), 'env.FTTF_GITHUB_URL')
+  Ember.get(FastBoot.require('process'), 'env.ENVIRONMENT_VARIABLE')
 }
 ```
 - `deferRendering(thenable)`
@@ -300,7 +296,7 @@ if (fastboot.get('isFastBoot')) {
 # the future
 - rehydration (we paid for that)
 - ❓❓ spitballing here, fastboot templates ❓❓
-- `POST`? [Ideas](https://github.com/emberjs/rfcs/pull/185) are being tossed around
+- `POST`? [Ideas are being tossed around](https://github.com/emberjs/rfcs/pull/185) 
 - ... and other cool stuff, come hang out in `-fastboot` on the ember slack
 
 ---

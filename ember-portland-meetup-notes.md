@@ -2,6 +2,7 @@
 
 # FastBoot to the Future
 ## Chad Carbert, @chadian on most things
+### github.com/chadian/fttf
 
 ---
 
@@ -10,7 +11,7 @@
 ---
 
 - We are a Community ✌🏽
-- opinionated holistic approach to common challenges
+- opinionated, holistic approach to common challenges
 - RFCs, a healthy discussion and evolution
 - diversified across organizations of all sizes, and types
 - `ember-cli`, ember addons, and the big ecosystem
@@ -21,6 +22,7 @@
 # Be the Bark
 ![alt text](http://madhatted.com/images/2016-02-10/more-bark-projects.jpg)
 * https://madhatted.com/2016/2/10/be-the-bark-ember-js-community (Matthew Beale, @mixonic, Ember Core)
+* **Stability without Stagnation**
 
 ---
 
@@ -38,13 +40,13 @@
 
 ---
 
-# The web is a big, big world.
-## and we're building ambitious applications
+# building ambitious applications
 ## Ember is the SDK for the web
+### We're building in so many different environments already
 - 🖥  `ember-electron`(see [Ghost Desktop](https://github.com/tryghost/Ghost-Desktop))
 - 📱 `ember cordova`, `ember-cli-cordova`
 - ⤴️ `ember-cli-deploy`
-- **Stability without Stagnation**
+- ... and `fastboot`
 
 ---
 
@@ -53,7 +55,7 @@
 
 ---
 
-# And then there's FastBoot!
+# FastBoot!
 
 ## progressive enhancement for ambitious web apps.
 ###### (and more...)
@@ -73,7 +75,6 @@
 <img src="https://drive.google.com/uc?id=0B5cL_igoQlKrLWtrdEhUQktwLUE">
 
 ---
-
 
 # Progressive Enhancement (the obvious win)
 
@@ -104,7 +105,25 @@ curl https://ember-fastboot.com
 
 ---
 
-# At the core [`fastboot`](https://github.com/ember-fastboot/fastboot)
+# FastBoot bark
+<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrVDhJU1ptLXM2TEk" width="700">
+
+---
+
+# get fastbooted 🤖
+## [`ember-cli-fastboot`](https://github.com/ember-fastboot/ember-cli-fastboot)
+## bootstrap your ember app
+
+1. `ember install ember-cli-fastboot`
+2. `ember build`
+3. check your `dist`
+4. `package.json`!
+
+### builds become special, your app becomes fastbooted
+
+---
+
+# [`fastboot`](https://github.com/ember-fastboot/fastboot)
 
 ```js
 const FastBoot = require('fastboot');
@@ -126,26 +145,11 @@ https://github.com/ember-fastboot/fastboot
 
 ---
 
-# get fastbooted 🤖
-## [`ember-cli-fastboot`](https://github.com/ember-fastboot/ember-cli-fastboot)
-## bootstrap your ember app
-
-1. `ember install ember-cli-fastboot`
-2. `ember build`
-3. check your `dist`
-4. `package.json`!
-
-### builds become special, your app becomes fastbooted
-###### build via `ember-cli`, #bethebark
-
----
-
 # [`fastboot-app-server`](https://github.com/ember-fastboot/fastboot-app-server)
 ##### `request ➡️ (before) ➡️  render ➡️ (after) ➡️ response`
 - express + middleware
-- first pass within your FastBoot runtime (~ node)
-- throw stuff in the shoebox for later
-- `FastBoot` magic global
+- request render via `visit`
+  - first pass within your FastBoot runtime (~ node)
 
 ---
 
@@ -167,6 +171,21 @@ https://github.com/ember-fastboot/fastboot
 
 ---
 
+## `FastBoot`
+- Global, it's just there
+- Only available in FastBoot runtime
+- `require`
+
+## `fastboot: Ember.inject.service()`
+- Ember service available in browser and FastBoot runtimes
+- `isFastBoot`
+- `response`
+- `request`
+- `shoebox`
+- `deferRendering`
+
+---
+
 # Tips and gotchas 💡🙈
 
 - `ember fastboot --serve-assets`, *basic fastboot app server*
@@ -174,8 +193,6 @@ https://github.com/ember-fastboot/fastboot
   - mind the hooks 🎣: `init`, `didReceiveAttrs`, `didUpdateAttrs`, `willRender` and `willUpdate`
 - Your initial UI feels "ready", it isn't
   - consider disabled states on elements, and temporary indicators
-- `FastBoot` vs `fastboot: Ember.service.inject()`
-  - wrap `FastBoot`with `fastboot.get('isFastboot')`
 
 ---
 
@@ -186,6 +203,8 @@ https://github.com/ember-fastboot/fastboot
 ```
 if (!process.env.EMBER_CLI_FASTBOOT) {}
 ```
+- Specific initializers: `app/initializers/fastboot`, `app/initializers/browser`
+  - with `fastboot-filter-initializers`  
 
 ---
 
@@ -212,10 +231,10 @@ if (!process.env.EMBER_CLI_FASTBOOT) {}
 ---
 
 # Case study: e-mail 💌
-- 🔌  power of existing components (`ember-i18n`)
-- 🔌 power of existing addons
+- 🔌  power of existing components
+- 🔌 power of existing addons (`ember-i18n`)
 - 🚜 configuration via node `process.env`
-  - bring in your API keys and secrets
+  - bring in your API keys and configuration
 - 🛠 build fast and on the fly 👐🏽 *via ember serve*
 - email = no external stylesheets
 - `express` middleware is your 🏭 assembly line
@@ -277,6 +296,7 @@ if (fastboot.get('isFastBoot')) {
 ---
 
 # other ideas
+- base64 inline images (and store in shoebox), wrap with a service
 - static embeddable
   - simple html deliverable *(ie: messaging, )*
   - ember app to compose
@@ -289,7 +309,6 @@ if (fastboot.get('isFastBoot')) {
 - e-commerce
   - speed is key, take my money
 - static sites / cms
-- base64 inline images (and store in shoebox), wrap with service
 
 ---
 

@@ -10,11 +10,11 @@
 
 ---
 
+# Ember
 - We are a Community ✌🏽
 - opinionated, holistic approach to common challenges
 - RFCs, a healthy discussion and evolution
 - diversified across organizations of all sizes, and types
-- `ember-cli`, ember addons, and the big ecosystem
 - Foundational growth: Ember Learning Team, EmberConf, meetups
 
 ---
@@ -23,20 +23,6 @@
 ![alt text](http://madhatted.com/images/2016-02-10/more-bark-projects.jpg)
 * https://madhatted.com/2016/2/10/be-the-bark-ember-js-community (Matthew Beale, @mixonic, Ember Core)
 * **Stability without Stagnation**
-
----
-
-# We are the bark
-<img src="https://pbs.twimg.com/media/BgsvdC8CUAE6OuK.jpg" width=400px>
-
-*the moment in which Alex realized the importance of bark*
-
-- Ember Core Team Alumni & Mr. Router
-- [The *very first* EmberConf 2014](https://www.youtube.com/watch?v=Syv_OTzHOr0)
-- EmberConf DJ
-- `ember-concurrency`
-- FutureProof Retail
-- Coming Soon: EmberConf 2017
 
 ---
 
@@ -55,14 +41,14 @@
 
 ---
 
-# FastBoot!
-
-## progressive enhancement for ambitious web apps.
-###### (and more...)
+<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrQ05zWkJDeHI1bWs" width="700">
 
 ---
 
-<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrQ05zWkJDeHI1bWs" width="700">
+# FastBoot
+
+## progressive enhancement for ambitious web apps.
+###### (and more...)
 
 ---
 
@@ -95,120 +81,24 @@ curl https://ember-fastboot.com
 
   </body>
 ```
-
----
-
-# It's just an ember app
-- check out `ember-fastboot.com` with the Ember Inspector *#bethebark*
-- Your browser instantly shows **state**, html and css.
 - The javascript payload *boots*, takes over (rips out initial render), and you're live
 
 ---
 
-# FastBoot bark
-<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrVDhJU1ptLXM2TEk" width="700">
-
----
-
-# get fastbooted 🤖
-## [`ember-cli-fastboot`](https://github.com/ember-fastboot/ember-cli-fastboot)
-## bootstrap your ember app
-
-1. `ember install ember-cli-fastboot`
-2. `ember build`
-3. check your `dist`
-4. `package.json`!
-
-### builds become special, your app becomes fastbooted
-
----
-
-# [`fastboot`](https://github.com/ember-fastboot/fastboot)
-
-```js
-const FastBoot = require('fastboot');
-
-let app = new FastBoot({
-  // `dist` is the result of your build
-  // via `ember-cli`
-  distPath: 'path/to/dist'
-});
-
-app.visit('/photos')
-  .then(result => result.html());
-
-```
-
-## `ember app (at route) ➡️ rendered html`
-
-https://github.com/ember-fastboot/fastboot
-
----
-
-# [`fastboot-app-server`](https://github.com/ember-fastboot/fastboot-app-server)
-##### `request ➡️ (before) ➡️  render ➡️ (after) ➡️ response`
-- express + middleware
-- request render via `visit`
-  - first pass within your FastBoot runtime (~ node)
-
----
-
-# DIY App Server
-## Express + [`fastboot-express-middleware`](fastboot-express-middleware)
-
----
-
-# Remember the route
+# The route
 ## `/posts/:post_slug?includeMagic=true`
 
 - Captures state
-  - Matches on ember-app
   - Matches on express request
   - Matches on FastBoot `app.visit`
+  - Matches on ember-app
 
 ... *getting the router right*
 *#bethebark*
 
 ---
 
-## `FastBoot`
-- Global, it's just there
-- Only available in FastBoot runtime
-- `require`
-
-## `fastboot: Ember.inject.service()`
-- Ember service available in browser and FastBoot runtimes
-- `isFastBoot`
-- `response`
-- `request`
-- `shoebox`
-- `deferRendering`
-
----
-
-# Tips and gotchas 💡🙈
-
-- `ember fastboot --serve-assets`, *basic fastboot app server*
-- Avoid `jQuery` and relying on `DOM` manipulation as much as possible
-  - mind the hooks 🎣: `init`, `didReceiveAttrs`, `didUpdateAttrs`, `willRender` and `willUpdate`
-- Your initial UI feels "ready", it isn't
-  - consider disabled states on elements, and temporary indicators
-
----
-
-# Tips and gotchas 💡🙈
-- Forget "ajax". Use `ember-network`, `fetch` spec and it's "isomorphic"
-- Whitelist node modules in `package.json`
-- Clean the build
-```
-if (!process.env.EMBER_CLI_FASTBOOT) {}
-```
-- Specific initializers: `app/initializers/fastboot`, `app/initializers/browser`
-  - with `fastboot-filter-initializers`  
-
----
-
-# What else can we do on this request/response trip through nodeland?
+# What else can we do on this request/response trip through Ember FastBoot (nodeland)?
 ## Think about
 - **state**
 - **presentation** of state
@@ -219,14 +109,14 @@ if (!process.env.EMBER_CLI_FASTBOOT) {}
 ---
 
 # Case study: e-mail 💌
-<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrendXZ3BqRmJIMGM" width="800">
+- email is **text** + **html** *+ css*
+- ember does both *and builds css*
+- ## hello fastboot
 
 ---
 
 # Case study: e-mail 💌
-- email is **text** + **html** *+ css*
-- ember does both *and builds css*
-- ## hello fastboot
+<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrendXZ3BqRmJIMGM" width="800">
 
 ---
 
@@ -240,7 +130,11 @@ if (!process.env.EMBER_CLI_FASTBOOT) {}
 - `express` middleware is your 🏭 assembly line
 - ❤️ the route
 
-- `ember`➡️ `ember-cli-fastboot` ➡️ `express.use` middleware response ➡️ `cheerio` + `juice` ➡️ `mailgun`
+- `ember`➡️ `ember-cli-fastboot` ➡️ `express.use` middleware ➡️ `cheerio` + `juice` ➡️ `mailgun`
+
+---
+
+# [video 🔗](https://www.youtube.com/watch?v=Clpvu3IgrU8)
 
 ---
 
@@ -275,12 +169,47 @@ if (!process.env.EMBER_CLI_FASTBOOT) {}
 7. ... move existing data to express middleware and build out API?
 8. ... more profit 💸💰💵
 
-## consider the alternative
+---
+
+# Tips and gotchas 💡🙈
+
+- `ember fastboot --serve-assets`, *basic fastboot app server*
+- Avoid `jQuery` and relying on `DOM` manipulation as much as possible
+  - mind the hooks 🎣: `init`, `didReceiveAttrs`, `didUpdateAttrs`, `willRender` and `willUpdate`
+- Your initial UI feels "ready", it isn't
+  - consider disabled states on elements, and temporary indicators
 
 ---
 
-# Bonus Tips
+# Tips and gotchas 💡🙈
+- Forget "ajax". Use `ember-network`, `fetch` spec and it's "isomorphic"
+- Whitelist node modules in `package.json`
+- Clean frontendy things from the build in `ember-cli-build.js`
+```
+if (!process.env.EMBER_CLI_FASTBOOT) {}
+```
+- Specific initializers: `app/initializers/fastboot`, `app/initializers/browser`
+  - with `fastboot-filter-initializers`  
 
+---
+
+# Tips and gotchas 💡🙈
+## `FastBoot`
+- Global, it's just there
+- Only available in FastBoot runtime
+- `require`
+
+## `fastboot: Ember.inject.service()`
+- Ember service available in browser and FastBoot runtimes
+- `isFastBoot`
+- `response`
+- `request`
+- `shoebox`
+- `deferRendering`
+
+--- 
+
+# Tips and gotchas 💡🙈
 - you're in nodeland, go nuts
 - Environment variables at FastBoot runtime
 ```js
@@ -288,7 +217,6 @@ if (fastboot.get('isFastBoot')) {
   Ember.get(FastBoot.require('process'), 'env.ENVIRONMENT_VARIABLE')
 }
 ```
-- `deferRendering(thenable)`
 - `nodemon` in your express app, watch your dist 
   - `ember s`, `ember fastboot`, `nodemon server.js -w . ../dist`
 - Node debug or `node --inspect --debug-brk` (natively in Chrome with `node >= v6.3.0`)
@@ -315,7 +243,7 @@ if (fastboot.get('isFastBoot')) {
 # the future
 - rehydration (we paid for that)
 - ❓❓ spitballing here, fastboot templates ❓❓
-- `POST`? [Ideas are being tossed around](https://github.com/emberjs/rfcs/pull/185) 
+- `POST` -- [Ideas are being tossed around](https://github.com/emberjs/rfcs/pull/185) 
 - ... and other cool stuff, come hang out in `-fastboot` on the ember slack
 
 ---
@@ -324,3 +252,61 @@ if (fastboot.get('isFastBoot')) {
 ## Thank you
 
 ---
+
+# Extra Bark
+
+---
+
+# We are the bark
+<img src="https://pbs.twimg.com/media/BgsvdC8CUAE6OuK.jpg" width=400px>
+
+*the moment in which Alex realized the importance of bark*
+
+- Ember Core Team Alumni & Mr. Router
+- [The *very first* EmberConf 2014](https://www.youtube.com/watch?v=Syv_OTzHOr0)
+- EmberConf DJ
+- `ember-concurrency`
+- FutureProof Retail
+- Coming Soon: EmberConf 2017
+
+---
+
+
+# FastBoot bark
+<img src="https://drive.google.com/uc?id=0B5cL_igoQlKrVDhJU1ptLXM2TEk" width="700">
+
+---
+
+# [`fastboot`](https://github.com/ember-fastboot/fastboot)
+
+```js
+const FastBoot = require('fastboot');
+
+let app = new FastBoot({
+  // `dist` is the result of your build
+  // via `ember-cli`
+  distPath: 'path/to/dist'
+});
+
+app.visit('/photos')
+  .then(result => result.html());
+
+```
+
+## `ember app (at route) ➡️ rendered html`
+
+https://github.com/ember-fastboot/fastboot
+
+---
+
+# [`fastboot-app-server`](https://github.com/ember-fastboot/fastboot-app-server)
+##### `request ➡️  render at route ➡️ response`
+- express + middleware
+- before/after middleware hooks
+- request render via `visit`
+  - first pass within your FastBoot runtime (~ node)
+
+---
+
+# DIY App Server
+## Express + [`fastboot-express-middleware`](fastboot-express-middleware)
